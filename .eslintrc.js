@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-04-22 14:54:14
+ * @LastEditTime : 2021-06-08 16:23:02
  */
 
 module.exports = {
@@ -11,10 +11,11 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    'jest/globals': true
   },
   extends: [
-    'plugin:vue/essential',
-    // 'airbnb-base',
+    'plugin:vue/vue3-recommended',
+    'plugin:vue/vue3-essential',
     '@constq/eslint-config-qzr/index',
     '@constq/eslint-config-qzr/vue',
     '@constq/eslint-config-qzr/typescript'
@@ -27,6 +28,7 @@ module.exports = {
   plugins: [
     'vue',
     '@typescript-eslint',
+    'jest'
   ],
   rules: {
   },

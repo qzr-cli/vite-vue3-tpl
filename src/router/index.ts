@@ -12,6 +12,10 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/:catchAll(.*)',
+    component: Home,
+  },
 ]
 
 const router = createRouter({
