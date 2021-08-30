@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-06-08 16:23:02
+ * @LastEditTime : 2021-06-18 16:10:23
  */
 
 module.exports = {
@@ -16,6 +16,7 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-strongly-recommended',
     '@constq/eslint-config-qzr/index',
     '@constq/eslint-config-qzr/vue',
     '@constq/eslint-config-qzr/typescript'

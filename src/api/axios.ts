@@ -8,15 +8,19 @@
 
 import axios from 'axios'
 
-const Axios = axios.create({
-  baseURL: '/api',
+const option:any = {
+  baseURL: '',
   timeout: 10000,
   responseType: 'json',
   withCredentials: true, // 是否允许带cookie这些
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
   },
-})
+}
+
+if (import.meta.env.DEV) option.baseURL = '/api'
+
+const Axios = axios.create(option)
 
 // 添加请求拦截器
 Axios.interceptors.request.use(

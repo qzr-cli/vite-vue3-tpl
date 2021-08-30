@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
+const pathSrc = resolve(__dirname, './src')
+
 export default defineConfig({
   plugins: [vue()],
   resolve: {
@@ -21,4 +23,12 @@ export default defineConfig({
     //   }
     // }
   },
+  css: {
+    preprocessorOptions: {
+      stylus: {
+        additionalData: `@import "${pathSrc}/styles/index.styl";`,
+        // imports: [resolve(__dirname, 'src/stylus/index')]
+      },
+    }
+  }
 })
