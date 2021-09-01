@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-06-09 11:36:13
+ * @LastEditTime : 2021-08-31 09:57:30
 -->
 
 
@@ -11,14 +11,13 @@
   <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { inject } from 'vue'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-  }
-})
+const $api = inject('$api')
+const $utils = inject('$utils')
+console.log($utils)
+console.log($api)
 </script>
 
 <style lang="stylus">

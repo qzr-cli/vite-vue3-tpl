@@ -14,9 +14,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "postcss": "^8.3.0",
-    "vue": "^3.0.5",
-    "vue-router": "4",
-    "vuex": "^4.0.0"
+    "vue": "^3",
+    "vue-router": "^4",
+    "vuex": "^4"
   },
   "devDependencies": {
     "@constq/eslint-config-qzr": "latest",
