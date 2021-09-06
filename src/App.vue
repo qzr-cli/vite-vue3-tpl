@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-08-31 09:57:30
+ * @LastEditTime : 2021-09-02 18:03:55
 -->
 
 
@@ -12,12 +12,19 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from 'vue'
+import { inject, onMounted } from 'vue'
 
 const $api = inject('$api')
-const $utils = inject('$utils')
+const $utils:any = inject('$utils')
+
 console.log($utils)
 console.log($api)
+
+onMounted(() => {
+  window.addEventListener('unload', e => {
+    $utils.bom.cookie.del('')
+  })
+})
 </script>
 
 <style lang="stylus">

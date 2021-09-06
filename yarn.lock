@@ -326,9 +326,9 @@
   integrity sha1-Fl6IyPPAnXKVqbLJhjIAdcanQj4=
 
 "@constq/qzr-utils@latest":
-  version "1.1.6"
-  resolved "https://r.cnpmjs.org/@constq/qzr-utils/download/@constq/qzr-utils-1.1.6.tgz#7183967947c70ba4a30715595e5eb9750bca5307"
-  integrity sha1-cYOWeUfHC6SjBxVZXl65dQvKUwc=
+  version "1.1.8"
+  resolved "https://r.cnpmjs.org/@constq/qzr-utils/download/@constq/qzr-utils-1.1.8.tgz#b740c80cbf92ca292829f941f6a179cc9be5e01e"
+  integrity sha1-t0DIDL+SyikoKflB9qF5zJvl4B4=
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -669,14 +669,14 @@
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
 "@types/node@*":
-  version "16.7.8"
-  resolved "https://r.cnpmjs.org/@types/node/download/@types/node-16.7.8.tgz#2448be5f24fe6b77114632b6350fcd219334651e"
-  integrity sha1-JEi+XyT+a3cRRjK2NQ/NIZM0ZR4=
+  version "16.7.10"
+  resolved "https://r.cnpmjs.org/@types/node/download/@types/node-16.7.10.tgz#7aa732cc47341c12a16b7d562f519c2383b6d4fc"
+  integrity sha1-eqcyzEc0HBKha31WL1GcI4O21Pw=
 
 "@types/node@^14.14.41":
-  version "14.17.12"
-  resolved "https://r.cnpmjs.org/@types/node/download/@types/node-14.17.12.tgz#7a31f720b85a617e54e42d24c4ace136601656c7"
-  integrity sha1-ejH3ILhaYX5U5C0kxKzhNmAWVsc=
+  version "14.17.14"
+  resolved "https://r.cnpmjs.org/@types/node/download/@types/node-14.17.14.tgz#6fda9785b41570eb628bac27be4b602769a3f938"
+  integrity sha1-b9qXhbQVcOtii6wnvktgJ2mj+Tg=
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -801,38 +801,38 @@
   resolved "https://r.cnpmjs.org/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.6.0.tgz#e5558e20c20e9098cd5bd65b9901fdcd2c354983"
   integrity sha1-5VWOIMIOkJjNW9ZbmQH9zSw1SYM=
 
-"@vue/compiler-core@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/compiler-core/download/@vue/compiler-core-3.2.6.tgz#7162bb0670273f04566af0d353009187ab577915"
-  integrity sha1-cWK7BnAnPwRWavDTUwCRh6tXeRU=
+"@vue/compiler-core@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/compiler-core/download/@vue/compiler-core-3.2.7.tgz#a7f1f87d4fae8c78d95a3d3df81bde663427deb8"
+  integrity sha1-p/H4fU+ujHjZWj09+BveZjQn3rg=
   dependencies:
     "@babel/parser" "^7.15.0"
     "@babel/types" "^7.15.0"
-    "@vue/shared" "3.2.6"
+    "@vue/shared" "3.2.7"
     estree-walker "^2.0.2"
     source-map "^0.6.1"
 
-"@vue/compiler-dom@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/compiler-dom/download/@vue/compiler-dom-3.2.6.tgz#3764d7fe1a696e39fb2a3c9d638da0749e369b2d"
-  integrity sha1-N2TX/hppbjn7KjydY42gdJ42my0=
+"@vue/compiler-dom@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/compiler-dom/download/@vue/compiler-dom-3.2.7.tgz#33abaeef89ec653e1a733143d4f7b6392def3de8"
+  integrity sha1-M6uu74nsZT4aczFD1Pe2OS3vPeg=
   dependencies:
-    "@vue/compiler-core" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/compiler-core" "3.2.7"
+    "@vue/shared" "3.2.7"
 
 "@vue/compiler-sfc@^3.0.5":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.2.6.tgz#d6ab7410cff57081ab627b15a1ea51a1072c7cf1"
-  integrity sha1-1qt0EM/1cIGrYnsVoepRoQcsfPE=
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.2.7.tgz#6ee803b7d5d375138fe86124b9c161eebbbc0f0d"
+  integrity sha1-bugDt9XTdROP6GEkucFh7ru8Dw0=
   dependencies:
     "@babel/parser" "^7.15.0"
     "@babel/types" "^7.15.0"
     "@types/estree" "^0.0.48"
-    "@vue/compiler-core" "3.2.6"
-    "@vue/compiler-dom" "3.2.6"
-    "@vue/compiler-ssr" "3.2.6"
-    "@vue/ref-transform" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/compiler-core" "3.2.7"
+    "@vue/compiler-dom" "3.2.7"
+    "@vue/compiler-ssr" "3.2.7"
+    "@vue/ref-transform" "3.2.7"
+    "@vue/shared" "3.2.7"
     consolidate "^0.16.0"
     estree-walker "^2.0.2"
     hash-sum "^2.0.0"
@@ -844,58 +844,58 @@
     postcss-selector-parser "^6.0.4"
     source-map "^0.6.1"
 
-"@vue/compiler-ssr@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/compiler-ssr/download/@vue/compiler-ssr-3.2.6.tgz#cadcf199859fa00739f4275b4c85970e4b0abe7d"
-  integrity sha1-ytzxmYWfoAc59CdbTIWXDksKvn0=
+"@vue/compiler-ssr@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/compiler-ssr/download/@vue/compiler-ssr-3.2.7.tgz#30a4cb128eb7b67be551b22889c58f1288586673"
+  integrity sha1-MKTLEo63tnvlUbIoicWPEohYZnM=
   dependencies:
-    "@vue/compiler-dom" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/compiler-dom" "3.2.7"
+    "@vue/shared" "3.2.7"
 
 "@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.0.0-beta.14":
   version "6.0.0-beta.15"
   resolved "https://r.cnpmjs.org/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.15.tgz#ad7cb384e062f165bcf9c83732125bffbc2ad83d"
   integrity sha1-rXyzhOBi8WW8+cg3MhJb/7wq2D0=
 
-"@vue/reactivity@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/reactivity/download/@vue/reactivity-3.2.6.tgz#b8993fa6f48545178e588e25a9c9431a1c1b7d50"
-  integrity sha1-uJk/pvSFRReOWI4lqclDGhwbfVA=
+"@vue/reactivity@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/reactivity/download/@vue/reactivity-3.2.7.tgz#dfdf49a3984e3b503c8d751a392b8afbab21fd32"
+  integrity sha1-399Jo5hOO1A8jXUaOSuK+6sh/TI=
   dependencies:
-    "@vue/shared" "3.2.6"
+    "@vue/shared" "3.2.7"
 
-"@vue/ref-transform@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/ref-transform/download/@vue/ref-transform-3.2.6.tgz#30b5f1fa77daf9894bc23e6a5a0e3586a4a796b8"
-  integrity sha1-MLXx+nfa+YlLwj5qWg41hqSnlrg=
+"@vue/ref-transform@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/ref-transform/download/@vue/ref-transform-3.2.7.tgz#1028708a44e1926f05e2967719a3481911c03c2f"
+  integrity sha1-EChwikThkm8F4pZ3GaNIGRHAPC8=
   dependencies:
     "@babel/parser" "^7.15.0"
-    "@vue/compiler-core" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/compiler-core" "3.2.7"
+    "@vue/shared" "3.2.7"
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
 
-"@vue/runtime-core@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/runtime-core/download/@vue/runtime-core-3.2.6.tgz#376baeef7fe02a62377d46d0d0a8ab9510db1d8e"
-  integrity sha1-N2uu73/gKmI3fUbQ0KirlRDbHY4=
+"@vue/runtime-core@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/runtime-core/download/@vue/runtime-core-3.2.7.tgz#bc6934e6b2b980bf20cf1bfd854fcf3be29e727a"
+  integrity sha1-vGk05rK5gL8gzxv9hU/PO+Kecno=
   dependencies:
-    "@vue/reactivity" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/reactivity" "3.2.7"
+    "@vue/shared" "3.2.7"
 
-"@vue/runtime-dom@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/runtime-dom/download/@vue/runtime-dom-3.2.6.tgz#0f74dbca84d56c222fbfbd53415b260386859a3b"
-  integrity sha1-D3TbyoTVbCIvv71TQVsmA4aFmjs=
+"@vue/runtime-dom@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/runtime-dom/download/@vue/runtime-dom-3.2.7.tgz#f663c524b4c2cedcb6c0f8314db46066ba180cce"
+  integrity sha1-9mPFJLTCzty2wPgxTbRgZroYDM4=
   dependencies:
-    "@vue/runtime-core" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/runtime-core" "3.2.7"
+    "@vue/shared" "3.2.7"
     csstype "^2.6.8"
 
-"@vue/shared@3.2.6":
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/@vue/shared/download/@vue/shared-3.2.6.tgz#2c22bae88fe2b7b59fa68a9c9c4cd60bae2c1794"
-  integrity sha1-LCK66I/it7WfpoqcnEzWC64sF5Q=
+"@vue/shared@3.2.7":
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/@vue/shared/download/@vue/shared-3.2.7.tgz#c792bf92d19025e7940358536d468218a11eeedb"
+  integrity sha1-x5K/ktGQJeeUA1hTbUaCGKEe7ts=
 
 "@vue/test-utils@^2.0.0-rc.6":
   version "2.0.0-rc.13"
@@ -1503,9 +1503,9 @@ copy-descriptor@^0.1.0:
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
 core-util-is@~1.0.0:
-  version "1.0.2"
-  resolved "https://r.cnpmjs.org/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
-  integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  version "1.0.3"
+  resolved "https://r.cnpmjs.org/core-util-is/download/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
+  integrity sha1-pgQtNjTCsn6TKPg3uWX6yDgI24U=
 
 cosmiconfig@^7.0.0:
   version "7.0.1"
@@ -1729,9 +1729,9 @@ duplexer2@~0.1.4:
     readable-stream "^2.0.2"
 
 electron-to-chromium@^1.3.811:
-  version "1.3.824"
-  resolved "https://r.cnpmjs.org/electron-to-chromium/download/electron-to-chromium-1.3.824.tgz#9f85cc826c70b12180009d461e3b19c8121a56d2"
-  integrity sha1-n4XMgmxwsSGAAJ1GHjsZyBIaVtI=
+  version "1.3.827"
+  resolved "https://r.cnpmjs.org/electron-to-chromium/download/electron-to-chromium-1.3.827.tgz#c725e8db8c5be18b472a919e5f57904512df0fc1"
+  integrity sha1-xyXo24xb4YtHKpGeX1eQRRLfD8E=
 
 emittery@^0.7.1:
   version "0.7.2"
@@ -3415,9 +3415,9 @@ listenercount@~1.0.1:
   integrity sha1-hMinKrWcRyUyFIDJdeZQg0LnCTc=
 
 listr2@^3.2.2:
-  version "3.11.0"
-  resolved "https://r.cnpmjs.org/listr2/download/listr2-3.11.0.tgz#9771b02407875aa78e73d6e0ff6541bbec0aaee9"
-  integrity sha1-l3GwJAeHWqeOc9bg/2VBu+wKruk=
+  version "3.11.1"
+  resolved "https://r.cnpmjs.org/listr2/download/listr2-3.11.1.tgz#a9bab5cd5874fd3cb7827118dbea6fedefbcb43f"
+  integrity sha1-qbq1zVh0/Ty3gnEY2+pv7e+8tD8=
   dependencies:
     cli-truncate "^2.1.0"
     colorette "^1.2.2"
@@ -5095,9 +5095,9 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 vite@latest:
-  version "2.5.1"
-  resolved "https://r.cnpmjs.org/vite/download/vite-2.5.1.tgz#953c71a034c07b3ae0448d57664ec9c6862f23a8"
-  integrity sha1-lTxxoDTAezrgRI1XZk7JxoYvI6g=
+  version "2.5.3"
+  resolved "https://r.cnpmjs.org/vite/download/vite-2.5.3.tgz#88d40a9efb9bec66bd87a7676c5689f35ff63742"
+  integrity sha1-iNQKnvub7Ga9h6dnbFaJ81/2N0I=
   dependencies:
     esbuild "^0.12.17"
     postcss "^8.3.6"
@@ -5151,13 +5151,13 @@ vue@*:
   integrity sha1-5RqlJQJQ1Wmj+606ilpofWA24jU=
 
 vue@^3:
-  version "3.2.6"
-  resolved "https://r.cnpmjs.org/vue/download/vue-3.2.6.tgz#c71445078751f458648fd8fb3a2da975507d03d2"
-  integrity sha1-xxRFB4dR9Fhkj9j7Oi2pdVB9A9I=
+  version "3.2.7"
+  resolved "https://r.cnpmjs.org/vue/download/vue-3.2.7.tgz#0850f2740f0cb58741f2c53bcbd9c6c705e4cc74"
+  integrity sha1-CFDydA8MtYdB8sU7y9nGxwXkzHQ=
   dependencies:
-    "@vue/compiler-dom" "3.2.6"
-    "@vue/runtime-dom" "3.2.6"
-    "@vue/shared" "3.2.6"
+    "@vue/compiler-dom" "3.2.7"
+    "@vue/runtime-dom" "3.2.7"
+    "@vue/shared" "3.2.7"
 
 vuex@^4:
   version "4.0.2"

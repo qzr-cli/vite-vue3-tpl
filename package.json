@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "license": "ISC",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
+    "dev:force": "vite --mode dev --force",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview",
+    "serve": "vite preview --mode prod",
     "prepare": "husky install"
   },
   "lint-staged": {
