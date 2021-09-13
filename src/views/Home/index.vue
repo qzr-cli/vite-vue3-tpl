@@ -3,13 +3,13 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-09-02 14:56:25
+ * @LastEditTime : 2021-09-13 14:55:24
 -->
 
 <template>
   <div>
     {{ test }}
-    <common-test />
+    <!-- <common-test /> -->
   </div>
 </template>
 
