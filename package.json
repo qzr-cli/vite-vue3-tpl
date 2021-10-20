@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --mode dev",
     "dev:force": "vite --mode dev --force",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build --mode dev",
+    "buildProd": "vue-tsc --noEmit && vite build --mode prod",
     "serve": "vite preview --mode prod",
     "prepare": "husky install"
   },
@@ -20,6 +21,8 @@
     "vuex": "^4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "@constq/eslint-config-qzr": "latest",
     "@constq/qzr-utils": "latest",
     "@types/jest": "^26.0.22",
@@ -30,6 +33,8 @@
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/test-utils": "^2.0.0-rc.6",
+    "commitizen": "^4.2.4",
+    "cz-customizable": "^6.3.0",
     "eslint": "^7.24.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.3.5",
@@ -44,5 +49,10 @@
     "vite": "latest",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-tsc": "^0.0.24"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
