@@ -27,7 +27,7 @@ export default defineConfig({
     preprocessorOptions: {
       stylus: {
         // additionalData: `@import "${pathSrc}/styles/index.styl";`,
-        imports: [resolve(__dirname, 'src/stylus/index')]
+        imports: [resolve(__dirname, 'src/style/index')]
       },
     }
   }
