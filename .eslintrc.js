@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-06-18 16:10:23
+ * @LastEditTime : 2021-10-20 17:52:03
  */
 
 module.exports = {
@@ -19,7 +19,8 @@ module.exports = {
     'plugin:vue/vue3-strongly-recommended',
     '@constq/eslint-config-qzr/index',
     '@constq/eslint-config-qzr/vue',
-    '@constq/eslint-config-qzr/typescript'
+    '@constq/eslint-config-qzr/typescript',
+    'plugin:jest/recommended'
   ],
   parserOptions: {
     ecmaVersion: 12,

@@ -5,6 +5,7 @@ import {
 } from 'vue-router'
 
 import Home from '@/views/Home/index.vue'
+import Other from '@/views/Other/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:catchAll(.*)',
     component: Home,
   },
+  {
+    path: '/other',
+    name: 'Other',
+    component: Other
+  }
 ]
 
 const router = createRouter({
