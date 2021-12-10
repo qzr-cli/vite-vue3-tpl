@@ -9,7 +9,8 @@
     "buildProd": "vue-tsc --noEmit && vite build --mode prod",
     "serve": "vite preview --mode prod",
     "prepare": "husky install",
-		"test": "jest"
+		"test": "jest",
+    "cz": "git add . && git cz"
   },
   "lint-staged": {
     "*.{vue,js,ts}": "eslint --fix"
