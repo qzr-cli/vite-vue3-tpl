@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-09-02 18:03:55
+ * @LastEditTime : 2021-12-14 14:24:19
 -->
 
 
@@ -28,4 +28,6 @@ onMounted(() => {
 </script>
 
 <style lang="stylus">
+body
+	margin 0
 </style>
