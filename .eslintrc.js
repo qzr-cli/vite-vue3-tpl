@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-10-20 17:52:03
+ * @LastEditTime : 2021-12-16 10:25:29
  */
 
 module.exports = {
@@ -27,6 +27,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
+  ignorePatterns: ['index.html'],
   plugins: [
     'vue',
     '@typescript-eslint',

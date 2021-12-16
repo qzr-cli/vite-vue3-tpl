@@ -10,7 +10,8 @@
     "serve": "vite preview --mode prod",
     "prepare": "husky install",
 		"test": "jest",
-    "cz": "git add . && git cz"
+    "cz": "git add . && git cz",
+    "docker": "docker image build -t constq/page:v1 ."
   },
   "lint-staged": {
     "*.{vue,js,ts}": "eslint --fix"
