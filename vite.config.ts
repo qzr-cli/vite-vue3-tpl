@@ -1,11 +1,26 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import AutoImport from 'unplugin-auto-import/vite'
+import visualizer from 'rollup-plugin-visualizer'
+import viteCompression from 'vite-plugin-compression'
 
 const pathSrc = resolve(__dirname, './src')
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    AutoImport({
+      imports: ['vue']
+    }),
+    visualizer({
+      filename: './node_modules/.cache/visualizer/stats.html',
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }),
+    viteCompression()
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
@@ -13,15 +28,15 @@ export default defineConfig({
   },
   base: './',
   server: {
-    cors: true // 允许跨域
+    cors: true, // 允许跨域
     // 设置代理
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://xxx.xxx.xxx.xxx:8000',
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace('/api/', '/')
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:7009',
+        changeOrigin: true,
+        rewrite: (path) => path.replace('/api/', '/api/')
+      }
+    }
   },
   css: {
     preprocessorOptions: {

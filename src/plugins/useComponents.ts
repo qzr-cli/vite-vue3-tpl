@@ -3,7 +3,7 @@
  * @Description  : 全局引用components common组件
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-12-15 11:37:52
+ * @LastEditTime : 2022-01-21 16:07:49
  */
 
 
@@ -13,11 +13,8 @@ export default function(Vue:any) {
 
   console.log(files)
   Object.keys(files).forEach((fileName:string) => {
-    console.log(fileName)
     let componentname:any = fileName.replace(/(\.\/|\.vue)/g, '').split('/')
     componentname = componentname[componentname.length - 1]
-    console.log(componentname)
-    console.log(files[fileName].default)
     Vue.component('common-' + componentname, files[fileName].default)
   })
 }

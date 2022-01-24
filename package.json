@@ -4,24 +4,32 @@
   "license": "ISC",
   "scripts": {
     "dev": "vite --mode dev",
+    "dev:mock": "vite --mode mock",
     "dev:force": "vite --mode dev --force",
     "build": "vue-tsc --noEmit && vite build --mode dev",
-    "buildProd": "vue-tsc --noEmit && vite build --mode prod",
+    "build:prod": "vue-tsc --noEmit && vite build --mode prod",
     "serve": "vite preview --mode prod",
     "prepare": "husky install",
-		"test": "jest",
+    "test": "jest",
     "cz": "git add . && git cz",
-    "docker": "docker image build -t constq/page:v1 ."
+    "docker:image": "docker build -t constq/page-blog:front-v0 .",
+    "docker:push": "docker push constq/page-blog:front-v0",
+    "docker": "yarn docker:image && yarn docker:push",
+    "release": "yarn buildProd && yarn docker"
   },
   "lint-staged": {
     "*.{vue,js,ts}": "eslint --fix"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "axios-jsonp": "^1.0.4",
+    "axios-retry": "^3.2.4",
+    "mockjs": "^1.1.0",
+    "pinia": "2.0.9",
     "postcss": "^8.3.0",
+    "qs": "^6.10.3",
     "vue": "^3",
-    "vue-router": "^4",
-    "vuex": "^4"
+    "vue-router": "^4"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
@@ -29,7 +37,10 @@
     "@constq/eslint-config-qzr": "latest",
     "@constq/qzr-utils": "latest",
     "@types/jest": "^26.0.22",
+    "@types/mockjs": "^1.0.6",
     "@types/node": "^14.14.41",
+    "@types/qs": "^6.9.7",
+    "@types/rollup-plugin-visualizer": "^4.2.1",
     "@types/vue": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
@@ -47,10 +58,14 @@
     "jest": "^26.6.3",
     "lint-staged": "^10.5.4",
     "postcss-px-to-viewport": "^1.1.1",
+    "rollup-plugin-visualizer": "^5.5.4",
     "stylus": "^0.54.8",
     "ts-jest": "^26.5.5",
     "typescript": "^4.1.3",
+    "unplugin-auto-import": "^0.5.11",
     "vite": "latest",
+    "vite-plugin-compression": "^0.4.0",
+    "vue-global-api": "^0.4.1",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-tsc": "^0.0.24"
   },

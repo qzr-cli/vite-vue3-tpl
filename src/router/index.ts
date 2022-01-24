@@ -4,8 +4,12 @@ import {
   RouteRecordRaw,
 } from 'vue-router'
 
+import { defineAsyncComponent } from 'vue'
 import Home from '@/views/Home/index.vue'
 import Other from '@/views/Other/index.vue'
+
+// 路由懒加载
+const _import = (path) => defineAsyncComponent(() => import(`../views/${path}/index.vue`))
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/other',
     name: 'Other',
-    component: Other
+    component: _import('Ohter')
   }
 ]
 

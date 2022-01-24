@@ -1,14 +1,14 @@
 # node镜像
-FROM node:latest as build-stage
+# FROM node:latest as build-stage
 # 维护者信息
-LABEL maintainer="z5021996@vip.qq.com"
+# LABEL maintainer="z5021996@vip.qq.com"
 
 # 拷贝前端项目 当前目录下的所有文件到app目录下(./指当前所有的代码路径 .指上一步cd到app的路径)
-COPY /dist /app/dist
+# COPY /dist /app/dist
 # COPY . /app
 
 # 指定接下来的工作路径为/app  - 类似于cd命令
-WORKDIR /app
+# WORKDIR /app
 
 # 设置淘宝npm镜像
 # RUN npm config set registry https://registry.npm.taobao.org
@@ -36,7 +36,8 @@ RUN rm /etc/nginx/nginx.conf
 # 把主机的nginx.conf文件复制到nginx容器的/etc/nginx文件夹下
 COPY ./nginx.conf /etc/nginx/
 # 拷贝前端vue项目打包后生成的文件到nginx下运行
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY ./dist /usr/share/nginx/html
 
 # 暴露80端口
 EXPOSE 9009

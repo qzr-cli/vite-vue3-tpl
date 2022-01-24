@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-12-16 10:25:29
+ * @LastEditTime : 2022-01-21 10:21:58
  */
 
 module.exports = {
@@ -20,8 +20,13 @@ module.exports = {
     '@constq/eslint-config-qzr/index',
     '@constq/eslint-config-qzr/vue',
     '@constq/eslint-config-qzr/typescript',
-    'plugin:jest/recommended'
+    'plugin:jest/recommended',
+    'vue-global-api'
   ],
+  globals: {
+    defineProps: true,
+    defineEmits: true
+  },
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
