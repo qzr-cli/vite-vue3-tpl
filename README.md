@@ -39,6 +39,11 @@
     已集成@types/jest eslint-plugin-jest
     可以在.husky pre-push中添加 yarn test命令
 
+### 4. 全局前置配置
+
+    /utils/preFun
+    用于配置一些dom或bom相关的方法
+
 ## 集成插件
 
 ### 1. 移动端自适应
@@ -95,3 +100,16 @@
     修改package.json docker命令相关的dockerhub名称
 
     执行yarn release进行打包并上传到dockerhub
+
+## 全局components
+
+### icon
+
+index.html引入iconfont js文件
+
+在vue文件中
+
+```html
+<common-icon :name="whatever"
+             :style="style">
+```

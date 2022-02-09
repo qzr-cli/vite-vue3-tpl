@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2021-12-14 14:24:19
+ * @LastEditTime : 2022-02-09 14:32:47
 -->
 
 
@@ -13,17 +13,21 @@
 
 <script lang="ts" setup>
 import { inject, onMounted } from 'vue'
+import { preFun, preDom } from '@/utils/preFun'
+import { useGlobal } from '@/store/global'
 
 const $api = inject('$api')
 const $utils:any = inject('$utils')
+const globalStore = useGlobal()
 
 console.log($utils)
 console.log($api)
+console.log('env', import.meta.env)
+console.log('pinia:', globalStore.env, globalStore.host)
 
 onMounted(() => {
-  window.addEventListener('unload', e => {
-    $utils.bom.cookie.del('')
-  })
+  preFun()
+  preDom()
 })
 </script>
 

@@ -13,6 +13,7 @@ import qs from 'qs'
 
 interface CustomOpt {
   reductData: boolean  // 是否直接返回数据
+  reductId: string
   contentType: 'json' | 'encode' | 'from'  // 参数传递方式
   timeout: number // 超时时间
 }
@@ -20,7 +21,8 @@ interface CustomOpt {
 const defaultOpt: CustomOpt = {
   reductData: true,
   contentType: 'json',
-  timeout: 10000
+  timeout: 10000,
+  reductId: 'info'
 }
 
 enum ContentType {
@@ -40,7 +42,7 @@ function axiosFn(customParam?: CustomOpt) {
     ...customParam
   }
 
-  const { contentType, reductData, timeout } = customOpt
+  const { contentType, reductData, timeout, reductId } = customOpt
 
   const option:any = {
     baseURL: '',
@@ -79,10 +81,10 @@ function axiosFn(customParam?: CustomOpt) {
       if (!res.data) {
         console.error('发生未知错误')
         return Promise.reject(res)
-      } else if (res.data.status !== 'success' || res.data.code !== 200) {
+      } else if (res.data.message !== 'success' || res.data.code !== 200) {
         console.error(res.data.message)
       }
-      return reductData ? res.data : res
+      return reductData ? res.data[reductId] : res.data
     },
     (error) => {
 
