@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-01-21 10:21:58
+ * @LastEditTime : 2022-02-09 14:52:07
  */
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  ignorePatterns: ['index.html'],
+  ignorePatterns: ['index.html', '/docker'],
   plugins: [
     'vue',
     '@typescript-eslint',

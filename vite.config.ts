@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 import visualizer from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
 
@@ -11,7 +15,11 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
+      resolvers: [ElementPlusResolver()],
       imports: ['vue']
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
     }),
     visualizer({
       filename: './node_modules/.cache/visualizer/stats.html',
