@@ -18,6 +18,13 @@ interface CustomOpt {
   timeout: number // 超时时间
 }
 
+interface CustomOptPar {
+  reductData?: boolean  // 是否直接返回数据
+  reductId?: string
+  contentType?: 'json' | 'encode' | 'from'  // 参数传递方式
+  timeout?: number // 超时时间
+}
+
 const defaultOpt: CustomOpt = {
   reductData: true,
   contentType: 'json',
@@ -36,7 +43,7 @@ enum ContentType {
  * @param customParam 自定义参数
  * @returns AxiosInstance
  */
-function axiosFn(customParam?: CustomOpt) {
+export function axiosFn(customParam?: CustomOptPar) {
   const customOpt: CustomOpt = {
     ...defaultOpt,
     ...customParam
@@ -101,7 +108,7 @@ function axiosFn(customParam?: CustomOpt) {
  *
  * @param url url地址
  */
-async function jsonp(url: string) {
+export async function jsonp(url: string) {
   let configObj = { ...{ url }, ...{ adapter: jsonpAdapter }}
   const Axios = axiosFn()
 
@@ -109,7 +116,7 @@ async function jsonp(url: string) {
   return res
 }
 
-export default { axios: axiosFn(), jsonp, axiosFn }
+export let axiosDefault = axiosFn()
 
 /**
  * 处理异常
@@ -117,7 +124,7 @@ export default { axios: axiosFn(), jsonp, axiosFn }
  */
 function httpErrorStatusHandle(error:any) {
   // 处理被取消的请求
-  if (axios.isCancel(error)) return console.error('请求的重复请求：' + error.message)
+  if (axios.isCancel(error)) return console.error('已取消的请求：' + error.message)
   let message = ''
   if (error && error.response) {
     switch (error.response.status) {

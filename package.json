@@ -2,6 +2,7 @@
   "name": "vite-vue3-tpl",
   "version": "0.0.0",
   "license": "ISC",
+  "docker_package": "const/page-blog:front-v1",
   "scripts": {
     "dev": "vite --mode dev",
     "dev:mock": "vite --mode mock",
@@ -12,10 +13,10 @@
     "prepare": "husky install",
     "test": "jest",
     "cz": "git add . && git cz",
-    "docker:image": "docker build -t constq/page-blog:front-v0 .",
-    "docker:push": "docker push constq/page-blog:front-v0",
-    "docker": "yarn docker:image && yarn docker:push",
-    "release": "yarn buildProd && yarn docker"
+    "docker:image": "docker build -t %npm_package_docker_package% .",
+    "docker:push": "docker push %npm_package_docker_package%",
+    "docker": "pnpm docker:image && pnpm docker:push",
+    "release": "pnpm buildProd && pnpm docker"
   },
   "lint-staged": {
     "*.{vue,js,ts}": "eslint --fix"

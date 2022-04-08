@@ -22,7 +22,7 @@
 # ======================== 上：npm打包  下：nginx运行 ========================
 
 # nginx镜像
-FROM nginx
+FROM nginx:alpine
 # 维护者信息
 LABEL maintainer="z5021996@vip.qq.com"
 
