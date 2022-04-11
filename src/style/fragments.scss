@@ -1,0 +1,20 @@
+// 公用代码块
+@mixin flex  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin textHideLine1  {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin textHideLine2  {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical; //子元素应该被水平或垂直排列
+  -webkit-line-clamp: 2;  //3行后显示省略号
+}
