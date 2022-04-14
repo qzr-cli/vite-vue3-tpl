@@ -51,10 +51,10 @@ export default defineConfig({
       scss: {
         additionalData: `@import "src/style/index.scss";`,
       },
-      stylus: {
-        // additionalData: `@import "${pathSrc}/styles/index.styl";`,
-        imports: [resolve(__dirname, 'src/style/index')]
-      },
+      // stylus: {
+      //   // additionalData: `@import "${pathSrc}/styles/index.styl";`,
+      //   imports: [resolve(__dirname, 'src/style/index')]
+      // },
     }
   }
 })

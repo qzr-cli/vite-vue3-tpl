@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-02-09 14:21:43
+ * @LastEditTime : 2022-04-14 08:56:35
 -->
 
 <template>
@@ -15,8 +15,6 @@
 </template>
 
 <script lang='ts' setup>
-import { defineProps, computed } from 'vue'
-
 const props = defineProps({
   name: {
     type: String,
