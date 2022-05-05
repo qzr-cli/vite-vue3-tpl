@@ -49,7 +49,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "src/style/index.scss";`,
+        additionalData: `@import "src/scss/index.scss";`,
       },
       // stylus: {
       //   // additionalData: `@import "${pathSrc}/styles/index.styl";`,

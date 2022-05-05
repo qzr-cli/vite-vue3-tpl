@@ -6,23 +6,15 @@
  * @LastEditTime : 2020-09-22 16:02:37
  */
 
-import axios from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import jsonpAdapter from 'axios-jsonp'
 import axiosRetry from 'axios-retry'
 import qs from 'qs'
 
-interface CustomOpt {
+interface CustomOpt extends AxiosRequestConfig {
   reductData: boolean  // 是否直接返回数据
   reductId: string
   contentType: 'json' | 'encode' | 'from'  // 参数传递方式
-  timeout: number // 超时时间
-}
-
-interface CustomOptPar {
-  reductData?: boolean  // 是否直接返回数据
-  reductId?: string
-  contentType?: 'json' | 'encode' | 'from'  // 参数传递方式
-  timeout?: number // 超时时间
 }
 
 const defaultOpt: CustomOpt = {
@@ -38,85 +30,139 @@ enum ContentType {
   'from' = 'multipart/form-data'
 }
 
-/**
- *
- * @param customParam 自定义参数
- * @returns AxiosInstance
- */
-export function axiosFn(customParam?: CustomOptPar) {
-  const customOpt: CustomOpt = {
-    ...defaultOpt,
-    ...customParam
+export class AxiosClass {
+  axios: AxiosInstance
+  option: CustomOpt
+  constructor(option: Partial<CustomOpt>) {
+    const customOpt: CustomOpt = {
+      ...defaultOpt,
+      ...option
+    }
+
+    this.option = {
+      baseURL: import.meta.env.VITE_HOST,
+      headers: {
+        'Content-Type': ContentType[customOpt.contentType],
+      },
+      ...customOpt
+    }
+
+    this.axios = axios.create(this.option)
+    console.log(this.axios, this.option)
+    AxiosClass.requestInterceptors(this.axios, this.option)
+    AxiosClass.responseInterceptors(this.axios, this.option)
+    axiosRetry(this.axios, { retries: 3 })
   }
 
-  const { contentType, reductData, timeout, reductId } = customOpt
+  static create(customOpt: Partial<CustomOpt>) {
+    const option: CustomOpt = {
+      baseURL: import.meta.env.VITE_HOST,
+      withCredentials: true,
+      headers: {
+        'Content-Type': ContentType[customOpt.contentType ?? 'json'],
+      },
+      ...defaultOpt,
+      ...customOpt
+    }
 
-  const option:any = {
-    baseURL: '',
-    timeout,
-    withCredentials: true, // 是否允许带cookie这些
-    headers: {
-      'Content-Type': ContentType[contentType],
-    },
+    const Axios = axios.create(option)
+
+    this.requestInterceptors(Axios, option)
+    this.responseInterceptors(Axios, option)
+
+    return Axios
   }
 
-  option.baseURL = import.meta.env.HOST
-
-  const Axios = axios.create(option)
-
-  // 重试三次请求
-  axiosRetry(Axios, { retries: 3 })
-
-  // 添加请求拦截器
-  Axios.interceptors.request.use(
-    (config) => {
-      if (contentType === 'encode') {
-        config.data = qs.stringify(config.data)
+  static requestInterceptors(axios: AxiosInstance, option: CustomOpt) {
+    axios.interceptors.request.use(
+      (config) => {
+        if (option.contentType === 'encode') {
+          config.data = qs.stringify(config.data)
+        }
+        return config
+      },
+      (error) => {
+        console.error(error)
+        return Promise.reject(error)
       }
-      return config
-    },
-    (error) => {
-      console.error(error)
-      return Promise.reject(error)
-    }
-  )
+    )
+  }
 
-  // 返回状态判断(添加响应拦截器)
-  Axios.interceptors.response.use(
-    (res) => {
-      // 对响应数据做些事
-      if (!res.data) {
-        console.error('发生未知错误')
-        return Promise.reject(res)
-      } else if (res.data.message !== 'success' || res.data.code !== 200) {
-        console.error(res.data.message)
+  static responseInterceptors(axios: AxiosInstance, option: CustomOpt) {
+    axios.interceptors.response.use(
+      (res) => {
+        const { reductData, reductId } = option
+        console.log(res)
+        // 对响应数据做些事
+        if (!res.data) {
+          console.error('发生未知错误')
+          return Promise.reject(res)
+        } else if (Number(res.data.code) !== 0) {
+          throw Error(res.data.msg)
+        }
+        return reductData ? res.data[reductId] : res.data
+      },
+      (error) => {
+
+        httpErrorStatusHandle(error)
+
+        return Promise.reject(error.response)
       }
-      return reductData ? res.data[reductId] : res.data
-    },
-    (error) => {
+    )
+  }
 
-      httpErrorStatusHandle(error)
-
-      return Promise.reject(error.response)
+  async jsonp(url: string) {
+    const config = {
+      ...{ url },
+      ...{ adapter: jsonpAdapter }
     }
-  )
+    const res = await this.axios.request(config)
+    return res
+  }
 
-  return Axios
+  async get<P, R>(url: string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.get(url, {
+      params: param,
+      ...option
+    })
+  }
+  async options<P, R>(url: string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.options(url, {
+      params: param,
+      ...option
+    })
+  }
+
+  async head<P, R>(url: string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.head(url, {
+      params: param,
+      ...option
+    })
+  }
+
+  async delete<P, R>(url: string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.delete(url, {
+      params: param,
+      ...option
+    })
+  }
+
+  async post<P, R>(url:string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.post(url, param, option)
+  }
+
+  async put<P, R>(url:string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.put(url, param, option)
+  }
+
+  async patch<P, R>(url:string, param: P, option?: AxiosRequestConfig): Promise<R> {
+    return this.axios.patch(url, param, option)
+  }
 }
 
-/**
- *
- * @param url url地址
- */
-export async function jsonp(url: string) {
-  let configObj = { ...{ url }, ...{ adapter: jsonpAdapter }}
-  const Axios = axiosFn()
-
-  const res = await Axios.request(configObj)
-  return res
-}
-
-export let axiosDefault = axiosFn()
+export const axiosDefault = new AxiosClass({
+  reductId: 'data'
+})
 
 /**
  * 处理异常
@@ -151,9 +197,4 @@ function httpErrorStatusHandle(error:any) {
   console.log(error.response)
   console.error(`${error.response.status}：${error.response.statusText}`)
   console.error(message)
-  // throw Error(message)
-  // ElMessage({
-  //   type: 'error',
-  //   message
-  // })
 }

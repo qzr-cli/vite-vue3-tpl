@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router/index'
 import { createPinia } from 'pinia'
 
+import './mock'
 import Plugins from '@/plugins'
 
 const app = createApp(App)

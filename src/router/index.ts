@@ -8,6 +8,8 @@ import { defineAsyncComponent } from 'vue'
 import Home from '@/views/Home/index.vue'
 import Other from '@/views/Other/index.vue'
 
+import beforeEach from './guard/beforeEach'
+
 // 路由懒加载
 const _import = (path) => defineAsyncComponent(() => import(`../views/${path}/index.vue`))
 
@@ -32,5 +34,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
+
+router.beforeEach(beforeEach)
 
 export default router
