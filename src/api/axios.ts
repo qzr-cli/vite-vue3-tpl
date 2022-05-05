@@ -40,7 +40,7 @@ export class AxiosClass {
     }
 
     this.option = {
-      baseURL: import.meta.env.VITE_HOST,
+      baseURL: (import.meta.env.VITE_HOST as string),
       headers: {
         'Content-Type': ContentType[customOpt.contentType],
       },
@@ -56,7 +56,7 @@ export class AxiosClass {
 
   static create(customOpt: Partial<CustomOpt>) {
     const option: CustomOpt = {
-      baseURL: import.meta.env.VITE_HOST,
+      baseURL: (import.meta.env.VITE_HOST as string),
       withCredentials: true,
       headers: {
         'Content-Type': ContentType[customOpt.contentType ?? 'json'],
