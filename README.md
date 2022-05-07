@@ -44,6 +44,12 @@
     /utils/preFun
     用于配置一些dom或bom相关的方法
 
+### 5. 配置化接口
+
+    /api/config  配置接口路径及接口类型
+    /api/type    配置接口入参、出参类型
+    /api/axios   配置axios类实例
+
 ## 集成插件
 
 ### 1. 移动端自适应
