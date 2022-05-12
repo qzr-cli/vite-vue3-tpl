@@ -74,6 +74,12 @@
 
     vite-plugin-compression插件
 
+### 5. 一键升级包工具
+
+    npm-check-updates
+
+    ncu -u // 更新package.json
+
 ## 规范化
 
 ### 1. 代码规范
