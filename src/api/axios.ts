@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 /**
  * @Date         : 2020-09-22 13:48:53
  * @Description  : axios封装
@@ -11,11 +12,11 @@ import jsonpAdapter from 'axios-jsonp'
 import axiosRetry from 'axios-retry'
 import qs from 'qs'
 
-interface CustomOpt extends AxiosRequestConfig {
-  reductData: boolean  // 是否直接返回数据
-  reductId: string
-  contentType: 'json' | 'encode' | 'from'  // 参数传递方式
-}
+ interface CustomOpt extends AxiosRequestConfig {
+   reductData: boolean  // 是否直接返回数据
+   reductId: string
+   contentType: 'json' | 'encode' | 'from'  // 参数传递方式
+ }
 
 const defaultOpt: CustomOpt = {
   reductData: true,
@@ -24,39 +25,45 @@ const defaultOpt: CustomOpt = {
   reductId: 'info'
 }
 
-enum ContentType {
-  'json' = 'application/json',
-  'encode' = 'application/x-www-form-urlencoded',
-  'from' = 'multipart/form-data'
-}
+ enum ContentType {
+   'json' = 'application/json',
+   'encode' = 'application/x-www-form-urlencoded',
+   'from' = 'multipart/form-data'
+ }
 
 export class AxiosClass {
   axios: AxiosInstance
   option: CustomOpt
+  requestPool: {
+     [key: symbol]: AbortController['signal']
+   }  // 请求池 用于取消请求
+  controller: AbortController // 取消请求api AbortController实例
   constructor(option: Partial<CustomOpt>) {
+    this.requestPool = {}
+    this.controller = new AbortController()
+
     const customOpt: CustomOpt = {
       ...defaultOpt,
       ...option
     }
 
     this.option = {
-      baseURL: (import.meta.env.VITE_HOST as string),
+      baseURL: import.meta.env.VITE_HOST,
       headers: {
         'Content-Type': ContentType[customOpt.contentType],
       },
       ...customOpt
     }
 
-    this.axios = axios.create(this.option)
-    console.log(this.axios, this.option)
-    AxiosClass.requestInterceptors(this.axios, this.option)
-    AxiosClass.responseInterceptors(this.axios, this.option)
-    axiosRetry(this.axios, { retries: 3 })
+    this.axios = this.create(this.option)
+    this.requestInterceptors()
+    this.responseInterceptors()
+    // axiosRetry(this.axios, { retries: 3 })
   }
 
-  static create(customOpt: Partial<CustomOpt>) {
+  private create(customOpt: Partial<CustomOpt>) {
     const option: CustomOpt = {
-      baseURL: (import.meta.env.VITE_HOST as string),
+      baseURL: import.meta.env.VITE_HOST,
       withCredentials: true,
       headers: {
         'Content-Type': ContentType[customOpt.contentType ?? 'json'],
@@ -67,18 +74,19 @@ export class AxiosClass {
 
     const Axios = axios.create(option)
 
-    this.requestInterceptors(Axios, option)
-    this.responseInterceptors(Axios, option)
-
     return Axios
   }
 
-  static requestInterceptors(axios: AxiosInstance, option: CustomOpt) {
-    axios.interceptors.request.use(
+  private requestInterceptors() {
+    this.axios.interceptors.request.use(
       (config) => {
-        if (option.contentType === 'encode') {
+        if (this.option.contentType === 'encode') {
           config.data = qs.stringify(config.data)
         }
+        config.signal = this.controller.signal
+        config['id'] = Symbol(config.url)
+
+        this.requestPool[config['id']] = config.signal
         return config
       },
       (error) => {
@@ -88,27 +96,32 @@ export class AxiosClass {
     )
   }
 
-  static responseInterceptors(axios: AxiosInstance, option: CustomOpt) {
-    axios.interceptors.response.use(
+  private responseInterceptors() {
+    this.axios.interceptors.response.use(
       (res) => {
-        const { reductData, reductId } = option
-        console.log(res)
+        const { reductData, reductId } = this.option
+        delete this.requestPool[res.config['id']]
         // 对响应数据做些事
         if (!res.data) {
           console.error('发生未知错误')
           return Promise.reject(res)
-        } else if (Number(res.data.code) !== 0) {
+        } else if (Number(res.data.code) === 1) {
           throw Error(res.data.msg)
         }
         return reductData ? res.data[reductId] : res.data
       },
       (error) => {
 
-        httpErrorStatusHandle(error)
+        httpErrorStatusHandle.call(this, error)
 
         return Promise.reject(error.response)
       }
     )
+  }
+
+  async request(config: AxiosRequestConfig) {
+    const res = await this.axios.request(config)
+    return res
   }
 
   async jsonp(url: string) {
@@ -152,7 +165,16 @@ export class AxiosClass {
   }
 
   async put<P, R>(url:string, param: P, option?: AxiosRequestConfig): Promise<R> {
-    return this.axios.put(url, param, option)
+    return this.axios.request({
+      url: url,
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: qs.stringify(param),
+      ...option
+    })
+    // return this.axios.put(url, param, option)
   }
 
   async patch<P, R>(url:string, param: P, option?: AxiosRequestConfig): Promise<R> {
@@ -160,14 +182,14 @@ export class AxiosClass {
   }
 }
 
-export const axiosDefault = new AxiosClass({
+export const Axios = new AxiosClass({
   reductId: 'data'
 })
 
 /**
- * 处理异常
- * @param {*} error
- */
+  * 处理异常
+  * @param {*} error
+  */
 function httpErrorStatusHandle(error:any) {
   // 处理被取消的请求
   if (axios.isCancel(error)) return console.error('已取消的请求：' + error.message)
@@ -197,4 +219,5 @@ function httpErrorStatusHandle(error:any) {
   console.log(error.response)
   console.error(`${error.response.status}：${error.response.statusText}`)
   console.error(message)
+
 }

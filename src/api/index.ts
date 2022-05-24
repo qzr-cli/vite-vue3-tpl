@@ -1,4 +1,4 @@
-import { axiosDefault as axios } from './axios'
+import { Axios } from './axios'
 import APISchema  from './type'
 import config from './config'
 
@@ -19,7 +19,7 @@ for (const item in config) {
     const url = element.split(' ')[1]
 
     target[item] = (param) => {
-      return axios[method](url, param)
+      return Axios[method](url, param)
     }
   }
 }

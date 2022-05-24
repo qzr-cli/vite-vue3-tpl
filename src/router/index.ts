@@ -4,29 +4,34 @@ import {
   RouteRecordRaw,
 } from 'vue-router'
 
-import { defineAsyncComponent } from 'vue'
 import Home from '@/views/Home/index.vue'
 import Other from '@/views/Other/index.vue'
 
 import beforeEach from './guard/beforeEach'
-
-// 路由懒加载
-const _import = (path) => defineAsyncComponent(() => import(`../views/${path}/index.vue`))
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      keepAlive: true
+    }
   },
   {
     path: '/:catchAll(.*)',
     component: Home,
+    meta: {
+      keepAlive: true
+    }
   },
   {
     path: '/other',
     name: 'Other',
-    component: _import('Ohter')
+    component: Other,
+    meta: {
+      keepAlive: false
+    }
   }
 ]
 

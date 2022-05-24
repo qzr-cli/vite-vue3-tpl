@@ -31,6 +31,7 @@ specifiers:
   lint-staged: ^12.4.1
   mockjs: ^1.1.0
   pinia: 2.0.14
+  pinia-plugin-persist: ^1.0.0
   postcss: ^8.4.13
   postcss-px-to-viewport: ^1.1.1
   qs: ^6.10.3
@@ -55,6 +56,7 @@ dependencies:
   axios-retry: 3.2.5
   mockjs: 1.1.0
   pinia: 2.0.14_typescript@4.6.4+vue@3.2.33
+  pinia-plugin-persist: 1.0.0_pinia@2.0.14+vue@3.2.33
   postcss: 8.4.13
   qs: 6.10.3
   vue: 3.2.33
@@ -4765,6 +4767,21 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
     dev: true
+
+  /pinia-plugin-persist/1.0.0_pinia@2.0.14+vue@3.2.33:
+    resolution: {integrity: sha512-M4hBBd8fz/GgNmUPaaUsC29y1M09lqbXrMAHcusVoU8xlQi1TqgkWnnhvMikZwr7Le/hVyMx8KUcumGGrR6GVw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0
+      pinia: ^2.0.0
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      pinia: 2.0.14_typescript@4.6.4+vue@3.2.33
+      vue: 3.2.33
+      vue-demi: 0.12.5_vue@3.2.33
+    dev: false
 
   /pinia/2.0.14_typescript@4.6.4+vue@3.2.33:
     resolution: {integrity: sha512-0nPuZR4TetT/WcLN+feMSjWJku3SQU7dBbXC6uw+R6FLQJCsg+/0pzXyD82T1FmAYe0lsx+jnEDQ1BLgkRKlxA==}

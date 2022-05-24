@@ -1,21 +1,24 @@
 import { defineStore } from 'pinia'
 
-const globalState = {
-  env: import.meta.env,
-  host: import.meta.env.VITE_HOST
+interface GlobalState {
+  env: any
+  host: string
 }
 
 export const useGlobal = defineStore({
-  id: 'global',
-  state() {
-    return globalState
+  id: 'GLOBAL',
+  state(): GlobalState {
+    return {
+      env: import.meta.env,
+      host: import.meta.env.VITE_HOST
+    }
   },
   getters: {
-    getHost(state: typeof globalState) {
-      return state.host
-    },
-    getEnv(state: typeof globalState) {
-      return state.env
-    }
+  },
+  actions: {
+
+  },
+  persist: {
+    enabled: true
   }
 })

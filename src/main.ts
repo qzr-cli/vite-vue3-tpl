@@ -3,13 +3,17 @@ import App from './App.vue'
 
 import router from './router/index'
 import { createPinia } from 'pinia'
+import piniaPluginPersist from 'pinia-plugin-persist'
 
-import './mock'
 import Plugins from '@/plugins'
+import './mock'
+
+const store = createPinia()
+store.use(piniaPluginPersist)
 
 const app = createApp(App)
 
 app.use(Plugins)
 app.use(router)
-app.use(createPinia())
+app.use(store)
 app.mount('#app')

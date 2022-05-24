@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-02-09 14:52:07
+ * @LastEditTime : 2022-05-24 15:50:05
  */
 
 module.exports = {
@@ -39,5 +39,6 @@ module.exports = {
     'jest'
   ],
   rules: {
+    'vue/multi-word-component-names': 'off',
   },
 }
