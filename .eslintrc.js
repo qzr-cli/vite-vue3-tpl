@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-05-24 15:50:05
+ * @LastEditTime : 2022-05-25 13:56:24
  */
 
 module.exports = {
@@ -40,5 +40,6 @@ module.exports = {
   ],
   rules: {
     'vue/multi-word-component-names': 'off',
+    'complexity': 'off'
   },
 }
