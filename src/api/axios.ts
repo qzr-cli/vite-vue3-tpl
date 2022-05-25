@@ -35,12 +35,10 @@ export class AxiosClass {
   axios: AxiosInstance
   option: CustomOpt
   requestPool: {
-     [key: symbol]: AbortController['signal']
+     [key: symbol]: AbortController
    }  // 请求池 用于取消请求
-  controller: AbortController // 取消请求api AbortController实例
   constructor(option: Partial<CustomOpt>) {
     this.requestPool = {}
-    this.controller = new AbortController()
 
     const customOpt: CustomOpt = {
       ...defaultOpt,
@@ -86,10 +84,11 @@ export class AxiosClass {
         if (this.option.contentType === 'encode') {
           config.data = qs.stringify(config.data)
         }
-        config.signal = this.controller.signal
+        const controller = new AbortController()
+        config.signal = controller.signal
         config['id'] = Symbol(config.url)
 
-        this.requestPool[config['id']] = config.signal
+        this.requestPool[config['id']] = controller
         return config
       },
       (error) => {
