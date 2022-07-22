@@ -3,12 +3,12 @@
  * @Description  : 全局引用components common组件
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-01-21 16:07:49
+ * @LastEditTime : 2022-07-22 09:14:25
  */
 
 
 export default function(Vue:any) {
-  const files:any = import.meta.globEager('../components/common/*.vue')
+  const files:any = import.meta.glob('../components/common/*.vue', { eager: true })
 
 
   console.log(files)

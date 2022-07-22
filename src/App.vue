@@ -3,19 +3,17 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-05-24 15:44:09
+ * @LastEditTime : 2022-07-22 09:33:58
 -->
 
 
 <template>
-  <router-view
-    v-slot="{ Component }">
-    <transition
-      name="slide-left"
-      mode="out-in">
+  <router-view v-slot="{ Component }">
+    <transition name="slide-left"
+                appear
+                mode="out-in">
       <keep-alive :include="keepAliveList">
-        <component
-          :is="Component" />
+        <component :is="Component" />
       </keep-alive>
     </transition>
   </router-view>
@@ -43,10 +41,11 @@ onMounted(() => {
 
 const keepAliveList = ref<string[]>([])
 for (const item of router.options.routes) {
-  if (item!.meta!.keepAlive) {
+  if (item!.meta!.keepAlive && item!.name) {
     keepAliveList.value.push(item!.name as string)
   }
 }
+console.log('thissssss', keepAliveList, router.options.routes)
 </script>
 
 <style lang="scss">

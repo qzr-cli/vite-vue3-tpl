@@ -3,20 +3,21 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-05-13 14:27:25
+ * @LastEditTime : 2022-07-22 09:35:45
 -->
 
 <template>
   <div>
-    {{ test }}
-    <!-- <common-test /> -->
+    {{ home }}
+    <button @click="router.push('/other')">goOther</button>
   </div>
 </template>
 
 <script lang='ts' setup>
-import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-const test = ref('Home')
+const router = useRouter()
+const home = ref('home')
 </script>
 
 <style scoped lang='scss'>
