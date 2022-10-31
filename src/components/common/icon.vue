@@ -1,15 +1,14 @@
 <!--
  * @Date         : 2021-09-02 15:05:56
- * @Description  :
+ * @Description  : 通用svg模块
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-07-22 09:33:44
+ * @LastEditTime : 2022-10-31 15:30:24
 -->
 
 <template>
   <svg class="icon"
-       aria-hidden="true"
-       :style="style">
+       aria-hidden="true">
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -19,10 +18,6 @@ const props = defineProps({
   name: {
     type: String,
     default: ''
-  },
-  style: {
-    type: Object,
-    default: () => {}
   },
   color: {
     type: String,
@@ -34,22 +29,10 @@ const props = defineProps({
   }
 })
 
-const defaultColor = '#8b8b8b'
-const defaultSize = '32px'
-
 const iconName = computed(() => {
   return `#icon-${props.name}`
 })
 
-const style = computed(() => {
-  return {
-    ...{
-      fontSize: props.size ?? defaultColor,
-      color: props.color ?? defaultSize
-    },
-    ...props.style
-  }
-})
 </script>
 
 <style scoped lang='stylus'>
@@ -58,5 +41,13 @@ const style = computed(() => {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+svg {
+  font-size: v-bind(size)
+}
+
+use {
+  color: v-bind(color)
 }
 </style>

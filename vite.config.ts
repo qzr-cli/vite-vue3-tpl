@@ -8,12 +8,21 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import visualizer from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import svgLoader from 'vite-svg-loader'
 
 const pathSrc = resolve(__dirname, './src')
 
 export default defineConfig({
   plugins: [
     vue(),
+    svgLoader(),
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
+      // 指定symbolId格式
+      symbolId: 'icon-[name]',
+    }),
     AutoImport({
       resolvers: [ElementPlusResolver()],
       imports: ['vue']

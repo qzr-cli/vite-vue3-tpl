@@ -30,6 +30,8 @@
     "pinia-plugin-persist": "^1.0.0",
     "postcss": "^8.4.14",
     "qs": "^6.11.0",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-svg-loader": "^3.6.0",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"
   },
