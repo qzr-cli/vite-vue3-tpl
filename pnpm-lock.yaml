@@ -45,7 +45,6 @@ specifiers:
   vite: ^3.0.2
   vite-plugin-compression: ^0.5.1
   vite-plugin-svg-icons: ^2.0.1
-  vite-svg-loader: ^3.6.0
   vue: ^3.2.37
   vue-global-api: ^0.4.1
   vue-jest: ^3.0.7
@@ -62,7 +61,6 @@ dependencies:
   postcss: 8.4.14
   qs: 6.11.0
   vite-plugin-svg-icons: 2.0.1_vite@3.0.2
-  vite-svg-loader: 3.6.0
   vue: 3.2.37
   vue-router: 4.1.2_vue@3.2.37
 
@@ -6757,13 +6755,6 @@ packages:
       vite: 3.0.2_sass@1.53.0+stylus@0.58.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /vite-svg-loader/3.6.0:
-    resolution: {integrity: sha512-bZJffcgCREW57kNkgMhuNqeDznWXyQwJ3wKrRhHLMMzwDnP5jr3vXW3cqsmquRR7VTP5mLdKj1/zzPPooGUuPw==}
-    dependencies:
-      '@vue/compiler-sfc': 3.2.37
-      svgo: 2.8.0
     dev: false
 
   /vite/3.0.2_sass@1.53.0+stylus@0.58.1:
