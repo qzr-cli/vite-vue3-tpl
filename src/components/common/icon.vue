@@ -1,9 +1,9 @@
 <!--
  * @Date         : 2021-09-02 15:05:56
- * @Description  : 通用svg模块
+ * @Description  : 通用svg模块 如修改颜色需svg文件内的fill="currentColor"
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-10-31 15:30:24
+ * @LastEditTime : 2022-10-31 15:45:51
 -->
 
 <template>

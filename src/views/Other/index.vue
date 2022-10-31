@@ -3,7 +3,7 @@
  * @Description  :
  * @Autor        : Qzr(z5021996@vip.qq.com)
  * @LastEditors  : Qzr(z5021996@vip.qq.com)
- * @LastEditTime : 2022-07-22 09:36:35
+ * @LastEditTime : 2022-10-31 15:47:07
 -->
 
 <template>
@@ -11,7 +11,9 @@
     <div class="page-title">Unit Test Page</div>
     <p>count is: {{ count }}</p>
     <button @click="increment">increment</button>
-    <common-icon />
+    <common-icon color="white"
+                 size="16px"
+                 name="logout" />
   </div>
 </template>
 

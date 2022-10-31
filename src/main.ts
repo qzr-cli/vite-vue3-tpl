@@ -8,6 +8,8 @@ import piniaPluginPersist from 'pinia-plugin-persist'
 import Plugins from '@/plugins'
 import './mock'
 
+import 'virtual:svg-icons-register'
+
 const store = createPinia()
 store.use(piniaPluginPersist)
 
