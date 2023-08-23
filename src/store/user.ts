@@ -49,7 +49,5 @@ export const useUser = defineStore({
       this.token = utils.bom.cookie.get('satoken')
     }
   },
-  persist: {
-    enabled: true
-  }
+  persist: true
 })

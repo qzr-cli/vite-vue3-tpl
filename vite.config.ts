@@ -10,6 +10,8 @@ import visualizer from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
+import UnoCss from 'unocss/vite'
+
 const pathSrc = resolve(__dirname, './src')
 
 export default defineConfig({
@@ -34,7 +36,8 @@ export default defineConfig({
       gzipSize: true,
       brotliSize: true,
     }),
-    viteCompression()
+    viteCompression(),
+    UnoCss()
   ],
   resolve: {
     alias: {

@@ -8,7 +8,7 @@
 
     代码中使用inject('$api')引入api接口对象
 
-### 2. 全局stylus
+### 2. 全局scss
 
     vite.config的css
 
@@ -79,6 +79,10 @@
     npm-check-updates
 
     ncu -u // 更新package.json
+
+### 6. unocss
+
+    uno.config.ts配置项
 
 ## 规范化
 

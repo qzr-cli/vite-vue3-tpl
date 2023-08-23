@@ -16,13 +16,15 @@ import { useUser } from '@/store/user'
    reductData: boolean  // 是否直接返回数据
    reductId: string
    contentType: 'json' | 'encode' | 'from'  // 参数传递方式
+   reductAll: boolean  // 返回所有数据
  }
 
 const defaultOpt: CustomOpt = {
   reductData: true,
   contentType: 'json',
   timeout: 10000,
-  reductId: 'info'
+  reductId: 'info',
+  reductAll: false  // 返回所有数据
 }
 
  enum ContentType {
@@ -104,7 +106,7 @@ export class AxiosClass {
   private responseInterceptors() {
     this.axios.interceptors.response.use(
       (res) => {
-        const { reductData, reductId } = this.option
+        const { reductData, reductId, reductAll } = this.option
         delete this.requestPool[res.config['id']]
         // 对响应数据做些事
         if (!res.data) {
@@ -113,6 +115,8 @@ export class AxiosClass {
         } else if (Number(res.data.code) === 1) {
           throw Error(res.data.msg)
         }
+        if (reductAll) return res
+
         return reductData ? res.data[reductId] : res.data
       },
       (error) => {

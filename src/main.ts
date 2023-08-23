@@ -2,20 +2,21 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import router from './router/index'
-import { createPinia } from 'pinia'
-import piniaPluginPersist from 'pinia-plugin-persist'
+import pinia from '@/store'
 
 import Plugins from '@/plugins'
-import './mock'
 
 import 'virtual:svg-icons-register'
+import 'virtual:uno.css'
+import '@unocss/reset/normalize.css'
 
-const store = createPinia()
-store.use(piniaPluginPersist)
+if (import.meta.env.VITE_ENV === 'mock') {
+  import('./mock')
+}
 
 const app = createApp(App)
 
 app.use(Plugins)
 app.use(router)
-app.use(store)
+app.use(pinia)
 app.mount('#app')
